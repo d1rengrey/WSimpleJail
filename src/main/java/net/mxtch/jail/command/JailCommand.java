@@ -1,7 +1,6 @@
 package net.mxtch.jail.command;
 
 import net.mxtch.jail.Jail;
-import net.mxtch.jail.JailConfig;
 import net.mxtch.jail.JailPlayer;
 import net.mxtch.jail.JailPlugin;
 import org.bukkit.Bukkit;
@@ -29,7 +28,7 @@ public class JailCommand implements CommandExecutor {
             if (args.length < 1){
                 if (jail.isPunished((Player) sender)){
                     JailPlayer jailPlayer = jail.getPunishedPlayer((Player) sender);
-                    sender.sendMessage(JailConfig.getMessage("punish-message")
+                    sender.sendMessage(jailPlugin.getConfig().getString("punish-message")
                             .replace("{player}", jailPlayer.getPlayer().getName())
                             .replace("{punisher}", jailPlayer.getPunisher().getName())
                             .replace("{duration}", String.valueOf(jailPlayer.getDurationPunishment()))

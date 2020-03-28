@@ -25,9 +25,6 @@ public class JailPlugin extends JavaPlugin {
 
         getCommand("jail").setExecutor(new JailCommand(jail, this));
 
-        JailConfig.setConfig(getConfig());
-
-
     }
 
 }
