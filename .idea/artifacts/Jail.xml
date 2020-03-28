@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Jail">
+    <output-path>$USER_HOME$/Desktop/PyProjects/AutoUploader/upload</output-path>
+    <root id="archive" name="Jail.jar">
+      <element id="module-output" name="Jail" />
+    </root>
+  </artifact>
+</component>
