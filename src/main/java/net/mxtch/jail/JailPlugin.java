@@ -10,9 +10,8 @@ import org.bukkit.plugin.java.annotation.command.Commands;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
 
 @Plugin(name = "Jail", version = "1.0")
-@Commands(
-        @Command(name = "jail", permission = "jail.use", usage = "/jail <player> [count] [reason]")
-)
+@Command(name = "jail", permission = "jail.use", usage = "/jail <player> [count] [reason]")
+
 public class JailPlugin extends JavaPlugin {
 
     @Override

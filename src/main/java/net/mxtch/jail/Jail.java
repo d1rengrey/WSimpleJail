@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class Jail {
         this.jailArea = new Location(Bukkit.getWorld(world), x, y, z);
     }
 
-    public boolean punishPlayer(JailPlayer player) {
+    public void punishPlayer(JailPlayer player) {
         for (JailPlayer jailPlayer : punishedPlayers){
             if (jailPlayer.getPlayer().getName().equals(player.getPlayer().getName())) {
                 jailPlayer.updateDurationPunishment(jailPlayer.getDurationPunishment() + player.getDurationPunishment());
@@ -38,7 +37,7 @@ public class Jail {
                         .replace("{duration}", String.valueOf(player.getDurationPunishment()))
                         .replace("{reason}", player.getReason())
                 );
-                return true;
+                return;
             }
         }
         punishedPlayers.add(player);
@@ -52,7 +51,6 @@ public class Jail {
                 .replace("{duration}", String.valueOf(player.getDurationPunishment()))
                 .replace("{reason}", player.getReason())
         );
-        return true;
     }
 
     public boolean isPunished(Player player) {
