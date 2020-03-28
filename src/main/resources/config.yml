@@ -1,1 +1,13 @@
 punish-message: "§f§lPunisher: §c{punisher} \n§f§lArrest duration: §c{duration} \n§f§lReason: §c{reason}"
+punisher-message: "тыры пыры заслал {player} на срок {duration} по причине {reason}"
+punish-info: "до освобождения осталось сломать {duration} блоков"
+punish-free: "Вы свободен"
+punishment-extended: "наказание продлено по причине {reason} игроком {player}"
+jail_settings:
+  punish-chat: true
+  chat-format: "§8{username}: §7{message}"
+jail_area:
+  world: "world"
+  x: 0
+  y: 0
+  z: 0

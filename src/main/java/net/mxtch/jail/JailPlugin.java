@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.annotation.plugin.Plugin;
 
 @Plugin(name = "Jail", version = "1.0")
 @Commands(
-        @Command(name = "jail", permission = "jail.use", usage = "/jail <player>")
+        @Command(name = "jail", permission = "jail.use", usage = "/jail <player> [count] [reason]")
 )
 public class JailPlugin extends JavaPlugin {
 
@@ -20,15 +20,15 @@ public class JailPlugin extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
         Jail jail = new Jail(this);
 
-        pluginManager.registerEvents(new JailHandler(), this);
-
-        getCommand("jail").setExecutor(new JailCommand(jail));
-
-        jail.start();
-
         saveDefaultConfig();
 
-        JailMessages.setConfig(getConfig());
+        pluginManager.registerEvents(new JailHandler(jail, this), this);
+
+        getCommand("jail").setExecutor(new JailCommand(jail, this));
+
+        JailConfig.setConfig(getConfig());
+
+
     }
 
 }

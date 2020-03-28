@@ -1,25 +1,26 @@
 package net.mxtch.jail.command;
 
 import net.mxtch.jail.Jail;
-import net.mxtch.jail.JailMessages;
+import net.mxtch.jail.JailConfig;
 import net.mxtch.jail.JailPlayer;
-import org.apache.commons.lang.ObjectUtils;
+import net.mxtch.jail.JailPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Optional;
-
 public class JailCommand implements CommandExecutor {
 
     private Jail jail;
+    private JailPlugin jailPlugin;
 
-    public JailCommand(Jail jail) {
+    public JailCommand(Jail jail, JailPlugin jailPlugin) {
         this.jail = jail;
+        this.jailPlugin = jailPlugin;
     }
 
-    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage("Usage command in the console is prohibited");
@@ -28,7 +29,7 @@ public class JailCommand implements CommandExecutor {
             if (args.length < 1){
                 if (jail.isPunished((Player) sender)){
                     JailPlayer jailPlayer = jail.getPunishedPlayer((Player) sender);
-                    sender.sendMessage(JailMessages.getMessage("punish-message")
+                    sender.sendMessage(JailConfig.getMessage("punish-message")
                             .replace("{player}", jailPlayer.getPlayer().getName())
                             .replace("{punisher}", jailPlayer.getPunisher().getName())
                             .replace("{duration}", String.valueOf(jailPlayer.getDurationPunishment()))
@@ -37,6 +38,19 @@ public class JailCommand implements CommandExecutor {
                     sender.sendMessage(command.getUsage());
                 }
             } else {
+                if (args[0].equalsIgnoreCase("set") && args.length == 2){
+                    if (args[1].equalsIgnoreCase("spawn")){
+                        jailPlugin.getConfig().set("jail_area.world", ((Player) sender).getWorld().getName());
+                        jailPlugin.getConfig().set("jail_area.x", ((Player) sender).getLocation().getBlockX());
+                        jailPlugin.getConfig().set("jail_area.y", ((Player) sender).getLocation().getBlockY());
+                        jailPlugin.getConfig().set("jail_area.z", ((Player) sender).getLocation().getBlockZ());
+                        jailPlugin.saveConfig();
+                        jail.loadJailLocation();
+                        sender.sendMessage("§aSpawn point has been set");
+                        return true;
+                    }
+                    return true;
+                }
                 Player player = Bukkit.getPlayer(args[0]);
 
                 if (player != null){
@@ -65,6 +79,12 @@ public class JailCommand implements CommandExecutor {
                                     .setPunisher((Player) sender)
                                     .setReason(message.toString())
                                     .build()
+                    );
+                    sender.sendMessage(jailPlugin.getConfig().getString("punisher-message")
+                            .replace("{player}", player.getName())
+                            .replace("{punisher}", sender.getName())
+                            .replace("{duration}", Long.toString(duration))
+                            .replace("{reason}", message)
                     );
                 } else {
                     sender.sendMessage("§c" + args[0] + " §foffline :(");

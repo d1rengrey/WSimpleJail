@@ -3,6 +3,8 @@ package net.mxtch.jail;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class JailPlayer {
     private Player punisher;
@@ -11,6 +13,7 @@ public class JailPlayer {
     private long durationPunishment;
     private Location lastLocation;
     private boolean endlessPunishmentTime;
+    private ItemStack[] inventoryContents;
 
     public Player getPlayer() {
         return player;
@@ -30,6 +33,10 @@ public class JailPlayer {
 
     public Location getLastLocation() {
         return lastLocation;
+    }
+
+    public ItemStack[] getInventoryContents(){
+        return inventoryContents;
     }
 
     public boolean isEndlessPunishmentTime() {
@@ -61,6 +68,7 @@ public class JailPlayer {
         public Builder setPlayer(Player player) {
             this.jailPlayer.player = player;
             this.jailPlayer.lastLocation = player.getLocation();
+            this.jailPlayer.inventoryContents = player.getInventory().getContents();
             return this;
         }
 
