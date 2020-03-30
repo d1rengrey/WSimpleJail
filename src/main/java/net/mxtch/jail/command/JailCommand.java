@@ -51,10 +51,10 @@ public class JailCommand implements CommandExecutor {
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("remove") && args.length == 2){
-                    Player player = Bukkit.getPlayer(args[1]);
-                    if (player != null){
-                        if (jail.isPunished(player)){
-                            JailPlayer jailPlayer = jail.getPunishedPlayer(player);
+                    Player p = Bukkit.getPlayer(args[1]);
+                    if (p != null){
+                        if (jail.isPunished(p)){
+                            JailPlayer jailPlayer = jail.getPunishedPlayer(p);
                             jail.removePunishPlayer(jailPlayer);
                             sender.sendMessage("§aPlayer successfully removed from jail");
                         } else {
@@ -97,7 +97,7 @@ public class JailCommand implements CommandExecutor {
                             .replace("{player}", player.getName())
                             .replace("{punisher}", sender.getName())
                             .replace("{duration}", Long.toString(duration))
-                            .replace("{reason}", message)
+                            .replace("{reason}", message.toString().replace("&", "§").trim())
                     );
                 } else {
                     sender.sendMessage("§c" + args[0] + " §foffline :(");

@@ -31,7 +31,7 @@ public class Jail {
         for (JailPlayer jailPlayer : punishedPlayers){
             if (jailPlayer.getPlayer().getName().equals(player.getPlayer().getName())) {
                 jailPlayer.updateDurationPunishment(jailPlayer.getDurationPunishment() + player.getDurationPunishment());
-                player.getPlayer().sendMessage(jailPlugin.getConfig().getString("punishment-extended")
+                player.getPlayer().sendMessage(jailPlugin.getMessages().getString("punishment-extended")
                         .replace("{player}", player.getPlayer().getName())
                         .replace("{punisher}", player.getPunisher().getName())
                         .replace("{duration}", String.valueOf(player.getDurationPunishment()))
