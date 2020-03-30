@@ -28,7 +28,7 @@ public class JailCommand implements CommandExecutor {
             if (args.length < 1){
                 if (jail.isPunished((Player) sender)){
                     JailPlayer jailPlayer = jail.getPunishedPlayer((Player) sender);
-                    sender.sendMessage(jailPlugin.getConfig().getString("punish-message")
+                    sender.sendMessage(jailPlugin.getMessages().getString("punish-message")
                             .replace("{player}", jailPlayer.getPlayer().getName())
                             .replace("{punisher}", jailPlayer.getPunisher().getName())
                             .replace("{duration}", String.valueOf(jailPlayer.getDurationPunishment()))
@@ -79,7 +79,7 @@ public class JailCommand implements CommandExecutor {
                                     .setReason(message.toString())
                                     .build()
                     );
-                    sender.sendMessage(jailPlugin.getConfig().getString("punisher-message")
+                    sender.sendMessage(jailPlugin.getMessages().getString("punisher-message")
                             .replace("{player}", player.getName())
                             .replace("{punisher}", sender.getName())
                             .replace("{duration}", Long.toString(duration))

@@ -1,0 +1,5 @@
+punish-message: "§f§lНаказал: §c{punisher} \n§f§lКоличество блоков: §c{duration} \n§f§lПричина: §c{reason}"
+punisher-message: "§7Вы наказали §c{player}§7, на §с{duration}§7 блоков по причине: §7{reason}"
+punish-info: "Осталось сломать {duration} блок(ов)"
+punish-free: "§aВы отработали свое наказание"
+punishment-extended: "§7Ваше наказание продлено, игроком {player} по причине: §c{reason}"

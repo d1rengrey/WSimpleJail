@@ -31,7 +31,7 @@ public class Jail {
         for (JailPlayer jailPlayer : punishedPlayers){
             if (jailPlayer.getPlayer().getName().equals(player.getPlayer().getName())) {
                 jailPlayer.updateDurationPunishment(jailPlayer.getDurationPunishment() + player.getDurationPunishment());
-                player.getPlayer().sendMessage(JailConfig.getMessage("punishment-extended")
+                player.getPlayer().sendMessage(jailPlugin.getConfig().getString("punishment-extended")
                         .replace("{player}", player.getPlayer().getName())
                         .replace("{punisher}", player.getPunisher().getName())
                         .replace("{duration}", String.valueOf(player.getDurationPunishment()))
@@ -45,7 +45,7 @@ public class Jail {
         player.getPlayer().setGameMode(GameMode.SURVIVAL);
         player.getPlayer().getInventory().clear();
 
-        player.getPlayer().sendMessage(JailConfig.getMessage("punish-message")
+        player.getPlayer().sendMessage(jailPlugin.getMessages().getString("punish-message")
                 .replace("{player}", player.getPlayer().getName())
                 .replace("{punisher}", player.getPunisher().getName())
                 .replace("{duration}", String.valueOf(player.getDurationPunishment()))
@@ -73,9 +73,13 @@ public class Jail {
         return punishedPlayers;
     }
 
+    public Location getJailArea() {
+        return jailArea;
+    }
+
     public void removePunishPlayer(JailPlayer jailPlayer) {
         punishedPlayers.remove(jailPlayer);
-        jailPlayer.getPlayer().sendMessage(jailPlugin.getConfig().getString("punish-free"));
+        jailPlayer.getPlayer().sendMessage(jailPlugin.getMessages().getString("punish-free"));
         jailPlayer.getPlayer().teleport(jailPlayer.getLastLocation());
         jailPlayer.getPlayer().getInventory().setContents(jailPlayer.getInventoryContents());
     }
