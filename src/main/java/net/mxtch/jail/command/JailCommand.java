@@ -50,6 +50,20 @@ public class JailCommand implements CommandExecutor {
                     }
                     return true;
                 }
+                if (args[0].equalsIgnoreCase("remove") && args.length == 2){
+                    Player player = Bukkit.getPlayer(args[1]);
+                    if (player != null){
+                        if (jail.isPunished(player)){
+                            JailPlayer jailPlayer = jail.getPunishedPlayer(player);
+                            jail.removePunishPlayer(jailPlayer);
+                            sender.sendMessage("§aPlayer successfully removed from jail");
+                        } else {
+                            sender.sendMessage("§cPlayer is not in jail");
+                        }
+                        return true;
+                    }
+                }
+
                 Player player = Bukkit.getPlayer(args[0]);
 
                 if (player != null){
