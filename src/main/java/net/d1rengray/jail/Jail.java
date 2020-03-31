@@ -1,4 +1,4 @@
-package net.mxtch.jail;
+package net.d1rengray.jail;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;

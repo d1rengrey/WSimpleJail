@@ -1,7 +1,7 @@
-package net.mxtch.jail;
+package net.d1rengray.jail;
 
-import net.mxtch.jail.command.JailCommand;
-import net.mxtch.jail.handler.JailHandler;
+import net.d1rengray.jail.handler.JailHandler;
+import net.d1rengray.jail.command.JailCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,7 +18,7 @@ import java.io.IOException;
 @Plugin(name = "Jail", version = "1.0")
 
 @Commands(
-        @Command(name = "jail", permission = "jail.use", usage = "/jail <player> [count] [reason]")
+        @Command(name = "net/d1rengray/jail", permission = "jail.use", usage = "/jail <player> [count] [reason]")
 )
 
 public class JailPlugin extends JavaPlugin {
@@ -35,7 +35,7 @@ public class JailPlugin extends JavaPlugin {
 
         pluginManager.registerEvents(new JailHandler(jail, this), this);
 
-        getCommand("jail").setExecutor(new JailCommand(jail, this));
+        getCommand("net/d1rengray/jail").setExecutor(new JailCommand(jail, this));
     }
 
     public FileConfiguration getMessages() {

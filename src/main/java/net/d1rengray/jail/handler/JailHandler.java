@@ -1,8 +1,8 @@
-package net.mxtch.jail.handler;
+package net.d1rengray.jail.handler;
 
-import net.mxtch.jail.Jail;
-import net.mxtch.jail.JailPlayer;
-import net.mxtch.jail.JailPlugin;
+import net.d1rengray.jail.Jail;
+import net.d1rengray.jail.JailPlayer;
+import net.d1rengray.jail.JailPlugin;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -10,12 +10,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class JailHandler implements Listener {

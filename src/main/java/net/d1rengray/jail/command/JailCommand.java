@@ -1,8 +1,8 @@
-package net.mxtch.jail.command;
+package net.d1rengray.jail.command;
 
-import net.mxtch.jail.Jail;
-import net.mxtch.jail.JailPlayer;
-import net.mxtch.jail.JailPlugin;
+import net.d1rengray.jail.Jail;
+import net.d1rengray.jail.JailPlayer;
+import net.d1rengray.jail.JailPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

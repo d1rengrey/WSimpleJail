@@ -1,9 +1,7 @@
-package net.mxtch.jail;
+package net.d1rengray.jail;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class JailPlayer {
